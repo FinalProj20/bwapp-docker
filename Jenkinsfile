@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("FinalProj20/bwapp_docker")
+        app = docker.build("finalproj20/bwapp_docker")
     }
 
     stage('Test image') {
