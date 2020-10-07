@@ -68,7 +68,7 @@ node {
             }*/
             
             stage('BurpSuite Scan') {
-                        build job: 'Burp-Dvwa', parameters: [
+                        build job: 'Burp-BWAPP', parameters: [
                         string(name: 'true')
                         ]
                     
