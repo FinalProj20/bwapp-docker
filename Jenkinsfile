@@ -25,15 +25,15 @@ node {
         }
     }
     
-     stage('Aqua Scan') {
+     /*stage('Aqua Scan') {
             aquaMicroscanner imageName: 'finalproj20/bwapp_docker', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
-    }
+    }*/
     
-   /*stage('Anchore Scan') {
+   stage('Anchore Scan') {
         def imageLine = 'finalproj20/bwapp_docker'
         writeFile file: 'anchore_images', text: imageLine
         anchore name: 'anchore_images'
-    }*/ 
+    } 
     
     docker.image('finalproj20/bwapp_docker').withRun('-p 8000:80') {
             stage('Setting Up the App'){
@@ -43,7 +43,7 @@ node {
                 }
             }
                 
-            /*stage('Arachni') {
+            stage('Arachni') {
             sh '''
                 mkdir -p $PWD/reports $PWD/artifacts;
                 docker run \
@@ -56,14 +56,14 @@ node {
                 docker rm arachni_report;
             '''
             archiveArtifacts artifacts: 'artifacts/**', fingerprint: true
-            }*/
+            }
             
-            stage('BurpSuite Scan') {
+            /*stage('BurpSuite Scan') {
                         build job: 'Burp-BWAPP', parameters: [
                         string(name: 'true')
                         ]
                     
-            }
+            }*/
         
         }
 }
