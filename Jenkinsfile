@@ -25,9 +25,9 @@ node {
         }
     }
     
-     /*stage('Aqua Scan') {
+     stage('Aqua Scan') {
             aquaMicroscanner imageName: 'finalproj20/bwapp_docker', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
-    }*/
+    }
     
    stage('Anchore Scan') {
         def imageLine = 'finalproj20/bwapp_docker'
